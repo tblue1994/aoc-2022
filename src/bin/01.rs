@@ -1,3 +1,5 @@
+advent_of_code::solution!(1);
+
 pub fn build_calorie_counts(input: &str) -> Vec<i32> {
     let values: Vec<&str> = input.lines().collect();
     let mut calorie_counts: Vec<i32> = Vec::new();
@@ -27,25 +29,19 @@ pub fn part_two(input: &str) -> Option<i32> {
     Some(highest.iter().sum())
 }
 
-fn main() {
-    let input = &advent_of_code::read_file("inputs", 1);
-    advent_of_code::solve!(1, part_one, input);
-    advent_of_code::solve!(2, part_two, input);
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_part_one() {
-        let input = advent_of_code::read_file("examples", 1);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_one(&input), Some(24000));
     }
 
     #[test]
     fn test_part_two() {
-        let input = advent_of_code::read_file("examples", 1);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_two(&input), Some(45000));
     }
 }

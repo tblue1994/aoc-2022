@@ -1,3 +1,5 @@
+advent_of_code::solution!(4);
+
 pub fn solve(input: &str, f: fn(u32, u32, u32, u32) -> bool) -> Option<u32> {
     let assignment_pairs: Vec<&str> = input.lines().collect();
     let mut total: u32 = 0;
@@ -38,25 +40,19 @@ pub fn part_two(input: &str) -> Option<u32> {
     solve(input, is_any_overlap)
 }
 
-fn main() {
-    let input = &advent_of_code::read_file("inputs", 4);
-    advent_of_code::solve!(1, part_one, input);
-    advent_of_code::solve!(2, part_two, input);
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_part_one() {
-        let input = advent_of_code::read_file("examples", 4);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_one(&input), Some(2));
     }
 
     #[test]
     fn test_part_two() {
-        let input = advent_of_code::read_file("examples", 4);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_two(&input), Some(4));
     }
 }

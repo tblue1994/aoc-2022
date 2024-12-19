@@ -1,3 +1,5 @@
+advent_of_code::solution!(6);
+
 use std::collections::HashSet;
 
 pub fn get_chars_unique_length_index(input: &str, num_unique: usize) -> Option<usize> {
@@ -26,25 +28,19 @@ pub fn part_two(input: &str) -> Option<usize> {
     get_chars_unique_length_index(input, 14)
 }
 
-fn main() {
-    let input = &advent_of_code::read_file("inputs", 6);
-    advent_of_code::solve!(1, part_one, input);
-    advent_of_code::solve!(2, part_two, input);
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_part_one() {
-        let input = advent_of_code::read_file("examples", 6);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_one(&input), Some(7));
     }
 
     #[test]
     fn test_part_two() {
-        let input = advent_of_code::read_file("examples", 6);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_two(&input), Some(19));
     }
 }
