@@ -1,3 +1,5 @@
+advent_of_code::solution!(5);
+
 use regex::Regex;
 
 pub fn parse_input(input: &str) -> (Vec<Vec<char>>, Vec<(usize, usize, usize)>) {
@@ -64,25 +66,19 @@ pub fn part_two(input: &str) -> Option<String> {
     Some(top_values)
 }
 
-fn main() {
-    let input = &advent_of_code::read_file("inputs", 5);
-    advent_of_code::solve!(1, part_one, input);
-    advent_of_code::solve!(2, part_two, input);
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_part_one() {
-        let input = advent_of_code::read_file("examples", 5);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_one(&input), Some(String::from("CMZ")));
     }
 
     #[test]
     fn test_part_two() {
-        let input = advent_of_code::read_file("examples", 5);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_two(&input), Some(String::from("MCD")));
     }
 }

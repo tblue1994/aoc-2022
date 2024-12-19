@@ -1,3 +1,5 @@
+advent_of_code::solution!(17);
+
 use std::{
     cmp::max,
     collections::{HashMap, HashSet},
@@ -105,25 +107,19 @@ pub fn part_two(input: &str) -> Option<u128> {
     Some(drop_rocks(1000000000000, &parse_moves(input)))
 }
 
-fn main() {
-    let input = &advent_of_code::read_file("inputs", 17);
-    advent_of_code::solve!(1, part_one, input);
-    advent_of_code::solve!(2, part_two, input);
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_part_one() {
-        let input = advent_of_code::read_file("examples", 17);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_one(&input), Some(3068));
     }
 
     #[test]
     fn test_part_two() {
-        let input = advent_of_code::read_file("examples", 17);
+        let input = advent_of_code::template::read_file("examples", DAY);
         assert_eq!(part_two(&input), Some(1514285714288));
     }
 }
