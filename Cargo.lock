@@ -25,7 +25,6 @@ dependencies = [
  "dhat",
  "pico-args",
  "regex",
- "regexc",
  "serde",
  "serde_json",
  "tinyjson",
@@ -344,12 +343,6 @@ name = "regex-syntax"
 version = "0.8.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2b15c43186be67a4fd63bee50d0303afffcef381492ebe2c5d87f324e1b8815c"
-
-[[package]]
-name = "regexc"
-version = "0.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ad44a4bd76be995eb099ff6520805ff0bbd50997c714dbcda5879f70f93d02c2"
 
 [[package]]
 name = "rustc-demangle"
