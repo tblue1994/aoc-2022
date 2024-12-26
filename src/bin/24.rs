@@ -1,7 +1,4 @@
-use std::{
-    collections::{HashMap, HashSet},
-    u64,
-};
+use std::u64;
 
 advent_of_code::solution!(24);
 

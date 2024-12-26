@@ -19,7 +19,7 @@ pub fn part_two(input: &str) -> Option<i128> {
     }
     let file_bits_slice = file_bits.as_mut_slice();
 
-    for i in 0..10 {
+    for _ in 0..10 {
         mix(file_bits_slice);
         // println!("{}", i);
         // println!("{:?}", file_bits_slice);

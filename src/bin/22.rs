@@ -68,7 +68,7 @@ pub fn move_on_map(map: Vec<Vec<char>>, directions: &[Direction]) -> u32 {
     for dir in directions {
         if let Direction::Move(x) = dir {
             for _ in 0..*x {
-                let mut stuck = false;
+                let stuck;
                 (position, stuck) = advance(position, current_dir, &map, max_x, max_y);
                 if stuck {
                     break;
@@ -146,46 +146,44 @@ pub fn advance(
 }
 
 pub fn part_one(input: &str) -> Option<u32> {
-    // let (map, directions) = parse_input(input);
-    // Some(move_on_map(map, &directions))
-    None
+    let (map, directions) = parse_input(input);
+    Some(move_on_map(map, &directions))
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    // let mut map: Vec<Vec<char>> = vec![];
-    // let mut directions: Vec<&str> = vec![];
-    // for line in input.lines() {
-    //     if line.contains(".") {
-    //         map.push(line.chars().collect());
-    //     }
+    let mut map: Vec<Vec<char>> = vec![];
+    let mut directions: Vec<&str> = vec![];
+    for line in input.lines() {
+        if line.contains(".") {
+            map.push(line.chars().collect());
+        }
 
-    //     if line.contains("L") {
-    //         //make regex
-    //         let re = Regex::new(r"(\d+|L|R)").unwrap();
-    //         for (_, [dir]) in re.captures_iter(input).map(|c| c.extract()) {
-    //             directions.push(dir);
-    //         }
-    //     }
-    // }
-    // let mut location = (50, 0);
-    // let mut direction = RIGHT;
-    // println!("{:?}, {:?}", location, direction);
-    // for dir in directions {
-    //     println!("----");
-    //     println!("{}", dir);
-    //     (location, direction) = follow_direction(location, direction, dir, &map);
-    //     println!("{:?}, {:?}", location, direction);
-    // }
+        if line.contains("L") {
+            //make regex
+            let re = Regex::new(r"(\d+|L|R)").unwrap();
+            for (_, [dir]) in re.captures_iter(input).map(|c| c.extract()) {
+                directions.push(dir);
+            }
+        }
+    }
+    let mut location = (50, 0);
+    let mut direction = RIGHT;
+    println!("{:?}, {:?}", location, direction);
+    for dir in directions {
+        println!("----");
+        println!("{}", dir);
+        (location, direction) = follow_direction(location, direction, dir, &map);
+        println!("{:?}, {:?}", location, direction);
+    }
 
-    // let dir_value = match direction {
-    //     RIGHT => 0,
-    //     LEFT => 2,
-    //     DOWN => 1,
-    //     UP => 3,
-    //     _ => panic!("Dir is effed"),
-    // };
-    // Some(((1000 * (location.1 + 1)) + (4 * (location.0 + 1)) + dir_value) as u32)
-    None
+    let dir_value = match direction {
+        RIGHT => 0,
+        LEFT => 2,
+        DOWN => 1,
+        UP => 3,
+        _ => panic!("Dir is effed"),
+    };
+    Some(((1000 * (location.1 + 1)) + (4 * (location.0 + 1)) + dir_value) as u32)
 }
 pub fn follow_direction(
     location: (isize, isize),
@@ -356,6 +354,13 @@ pub fn special_case(
     return ((x, y), direction);
 }
 
+pub fn test_one(_input: &str) -> Option<u32> {
+    None
+}
+pub fn test_two(_input: &str) -> Option<u32> {
+    None
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -363,12 +368,12 @@ mod tests {
     #[test]
     fn test_part_one() {
         let input = advent_of_code::template::read_file("examples", DAY);
-        assert_eq!(part_one(&input), None);
+        assert_eq!(test_one(&input), None);
     }
 
     #[test]
     fn test_part_two() {
         let input = advent_of_code::template::read_file("examples", DAY);
-        assert_eq!(part_two(&input), None);
+        assert_eq!(test_two(&input), None);
     }
 }
